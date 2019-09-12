@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>我的消息</title>
+	<link rel="icon" href="img/page_icon.png" />
+
+    <link href="css/home_page/home_page_circle.css" rel="stylesheet" />
+    <link href="css/home_page/header_record.css" rel="stylesheet" />
+    <link href="css/home_page/bottom_ifon_and_feature.css" rel="stylesheet" />  
+    <script src="js/jquery-1.3.2.min.js"></script>
+    <script src="js/home/header_model_js.js"></script>
+	<script src="js/myrecord.js"></script>
+	<style type="text/css">
+	.hide{
+		display:none;	
+	}
+	.title{
+		width:100%;
+		height:38px;	
+		float:left;
+		cursor:pointer;
+	}
+	.title.left{
+		width:60%;
+		height:100%;
+	}
+	.title.right{
+		width:40%;
+		height:100%;
+		
+	}
+	.title:hover{
+		background:#a19595;
+	}
+	button:hover{
+		background:#a19595;
+	}
+</style>
+<script type="text/javascript">
+function user1(){
+	var qin= document.getElementById('1');
+	if(qin.className=='hide')
+  	{
+		qin.className='show';
+	}
+	else
+	{
+		qin.className='hide';
+	}	
+	};
+	
+	function user2(){
+	var qin= document.getElementById('2');
+	if(qin.className=='hide')
+  	{
+		qin.className='show';
+	}
+	else
+	{
+		qin.className='hide';
+	}	
+	};
+	
+	function user3(){
+	var qin= document.getElementById('3');
+	if(qin.className=='hide')
+  	{
+		qin.className='show';
+	}
+	else
+	{
+		qin.className='hide';
+	}	
+	};
+	
+	
+	function user4(){
+		var qin= document.getElementById('4');
+		if(qin.className=='hide')
+	  	{
+			qin.className='show';
+		}
+		else
+		{
+			qin.className='hide';
+		}	
+	};
+	
+	function user5(){
+		var qin= document.getElementById('5');
+		if(qin.className=='hide')
+	  	{
+			qin.className='show';
+		}
+		else
+		{
+			qin.className='hide';
+		}	
+	};
+	
+	function user6(){
+		var qin= document.getElementById('6');
+		if(qin.className=='hide')
+	  	{
+			qin.className='show';
+		}
+		else
+		{
+			qin.className='hide';
+		}	
+	};
+	
+	function user7(){
+		var qin= document.getElementById('7');
+		if(qin.className=='hide')
+	  	{
+			qin.className='show';
+		}
+		else
+		{
+			qin.className='hide';
+		}	
+	};
+</script>
+	
+</head>
+
+
+<body>
+<header>
+    <span class="short_nav"></span>
+    <div class="home_icon">
+        <a href="/c2c/" style="text-decoration: none;color: white">同窗易购</a>
+    </div>
+    <input type="text" placeholder="Search" name="search" class="nav_search_input" onkeydown="KeyDown()" />
+    <span class="search_icon"></span>
+    <span class="user_icon"></span>
+    
+    <span class="login_or_register_string">
+        <!--判断是否有登陆，两者相互替换-->
+        
+        <a href="/c2c/personal_info.do" class="user_name_a" id="user_name_a" th:value="${userInformation.username}"></a>
+    </span>
+</header>
+<div class="short_nav_show">
+    
+</div>
+<nav class="my_nav">
+    <ul>
+        <li><a href="/c2c/">首页</a></li>
+        <li><a href="/c2c/mall_page.do">商城</a></li>
+        <li><a href="/c2c/require_mall.do">求购商城</a></li>
+
+        <li><a href="/c2c/my_record.do">我的消息</a></li>
+        <li><a href="/c2c/feed_back.do">联系我们</a></li>
+    </ul>
+</nav>
+<div class="personal_nav">
+    <ul>
+        <li><a href="personal_info.do">个人中心</a></li>
+        <li><a href="/c2c/publish_product.do">发布商品</a></li> 
+        <li><a href="/c2c/require_product.do">发布求购信息</a></li>
+        <li><a href="/c2c/shopping_cart.do">我的购物车</a></li>
+        <li><a href="/c2c/my_publish_product_page.do">我发布的商品</a></li>
+        <li><a href="/c2c/my_require_product_page.do">我求购的商品</a></li>
+        <li><a class="/login_out" href="/c2c/logout.do">退出</a></li>
+    </ul>
+</div>
+
+ <div class="ly" style="width:100%;height:auto;">
+	<div style="width:60%;height:aotu;margin-left:20%;margin-top:17%;border:1px solid #e8e2e2">
+	    
+	    <div th:if="${pl0.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" >
+	    	<div class="title left"><span th:text="空空如也">&nbsp;您暂时没有消息呢?!</span></div>
+	    </div>
+	  	 
+	    
+	    <div th:if="${pl1.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user1()">
+	    	<div class="title left"><span th:text="'来自:'+${pl1.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl1.modified}">test</span></div>
+	    </div>
+	    <div id="1" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:5%">
+	            <h4 style="margin-left: -26%;margin-top: 11%;">留言:<span th:text="${pl1.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a1" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p1" id="sendid1" th:value="${pl1.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;margin-bottom: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	  	 </div>
+	     
+	     
+	     
+	    <div th:if="${pl2.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user2()">
+	    	<div class="title left"><span th:text="'来自:'+${pl2.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl2.modified}">test</span></div>
+	    </div>
+	    <div id="2" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:5%">
+	            <h4 style="margin-left: -26%;margin-top: 20%;">留言:<span th:text="${pl2.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a2" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p2" id="sendid2" th:value="${pl2.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	     
+	     
+	     
+	     <div th:if="${pl3.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user3()">
+	    	<div class="title left"><span th:text="'来自:'+${pl3.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl3.modified}">test</span></div>
+	    </div>
+	    <div id="3" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:5%">
+	            <h4 style="margin-left: -26%;margin-top: 25%;">留言:<span th:text="${pl3.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a3" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p3" id="sendid3" th:value="${pl3.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	     
+	     
+	     
+	     <div th:if="${pl4.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user4()">
+	    	<div class="title left"><span th:text="'来自:'+${pl4.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl4.modified}">test</span></div>
+	    </div>
+	    <div id="4" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:8%">
+	            <h4 style="margin-left: -26%;margin-top: 31%;">留言:<span th:text="${pl4.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a4" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p4" id="sendid4" th:value="${pl4.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	  	 
+	  	 
+	  	 <div th:if="${pl5.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user5()">
+	    	<div class="title left"><span th:text="'来自:'+${pl5.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl5.modified}">test</span></div>
+	    </div>
+	    <div id="5" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:8%">
+	            <h4 style="margin-left: -26%;margin-top: 39%;">留言:<span th:text="${pl5.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a5" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p5" id="sendid5" th:value="${pl5.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	  	 
+	  	 <div th:if="${pl6.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user6()">
+	    	<div class="title left"><span th:text="'来自:'+${pl6.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl6.modified}">test</span></div>
+	    </div>
+	    <div id="6" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:8%">
+	            <h4 style="margin-left: -26%;margin-top: 45%;">留言:<span th:text="${pl6.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a6" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p6" id="sendid6" th:value="${pl6.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	  	 
+	  	 <div th:if="${pl7.username}!=null" class="title" style="border:1px solid #e8e2e2;margin-top: 3px;height:30px;box-shadow: 2px 2px 1px #e8e2e2;-webkit-border-radius: 3px" onClick="user7()">
+	    	<div class="title left"><span th:text="'来自:'+${pl7.username}">test</span></div>
+	    	<div class="title right"><span th:text="'时间:  '+${pl7.modified}">test</span></div>
+	    </div>
+	    <div id="7" class="hide" style="width:100%;border:1px #C88 solid;box-shadow: 4px 2px 2px #e8e2e2;-webkit-border-radius: 3px;">
+			<div style="width:60%;margin-left:20%;margin-top:8%">
+	            <h4 style="margin-left: -26%;margin-top:50%;">留言:<span th:text="${pl7.context}">test</span></h4>	
+			</div>       	
+	        <div style="width:100%;">
+	        	<div style="width:100%">
+	        	<textarea id="a7" style="margin: 0px 0px 0px 139.4px;width: 68%;height: 70px;"></textarea>
+	            </div>
+	            <div style="width:100%">
+	            <button class="p7" id="sendid7" th:value="${pl7.sendid}" style="width:36%;height:33px;margin-left:31%;margin-top: 4%;box-shadow: 0px 0px 2px #e8e2e2;border:none;border-radius: 3px;cursor:pointer;">回复</button>
+	            </div>
+	        </div>
+	        <br />
+	        <br />
+	  	 </div>
+	  	 
+
+	</div> 
+</div>      
+     
+</body>
+</html>

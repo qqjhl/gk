@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>限时特价</title>
+    <link href="css/home_page/header_and_nav.css" rel="stylesheet"/>
+    <link href="css/home_page/acti.css" rel="stylesheet"/>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/home/rush.js"></script>
+</head>
+<body>
+	<header th:include="header :: copy"></header>
+	<div th:include="short_nav_show :: short_nav_show" class="short_nav_show"></div>
+	<nav th:include="my_nav :: my_nav" class="my_nav"></nav>
+	<div th:include="personal_nav :: personal_nav" class="personal_nav"></div>
+	
+	
+	<div id="container" style="width: 100%;float: right;margin-top: 6%;"> 
+		<div id="left" style="width: 17%;background: #aebbae;margin-left: 5%;margin-top: 6%;float: left;-webkit-border-radius: 5px;"></div>
+		<div id="middle" style="width: 60%;height: auto;min-height: 600px;margin-top: 7%;margin-left: 20%;margin-right: 20%;background: white;border: 1px solid #a89b9b;box-shadow: 5px 5px 10px #888888;-webkit-border-radius: 5px;">
+			<!--  <div style="width: 100%;background-color: aliceblue;">
+				 <span style="margin-left: 5%;">
+					<img src="img/home/58a7b127N54121e80.jpg" style="margin: 5% 0% 0% 3%;width: 100px;height: 67px;"/>
+				</span>
+				
+				<span style="margin-left: 35%;">
+					<h2>honor 20</h2>
+					<span>数量：100  价格：2760 元</span>
+				</span>
+				
+				<span style="margin-left: 85%;">
+					<button >参与抢购</button>
+				</span>   
+				
+			</div>  -->
+			<div style="width: 100%;background-color: aliceblue;">
+				商品总数：<input id="count" value="100"/>
+				参与人数：<input id="consumer" value="800"/>
+				<button class="pub">发布抢购活动</button>
+				<button class="grab">模拟抢购</button>
+			</div>
+		</div>
+	</div>
+	
+	
+	<footer>
+    <p>Copyright © 2019-2022.Company name All rights reserved.<a href="#"></a></p>
+	</footer>
+</body>
+</html>

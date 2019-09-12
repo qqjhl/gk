@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.upc.dao.UserAddrMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.upc.pojo.UserAddr" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="table">
+    useraddr
+  </sql>
+
+  <sql id="all" >
+    id, uid, addr, phone
+  </sql>
+  <select id="findById" parameterType="INTEGER" resultMap="BaseResultMap">
+  select <include refid="all"/> from <include refid="table"/> where uid = #{uid}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+  select <include refid="all"/> from <include refid="table"/> 
+  </select>
+  
+  <update id="updateAddr" parameterType="cn.edu.upc.pojo.UserAddr">
+  update <include refid="table"/> 
+  	set uid=#{uid, jdbcType=INTEGER},
+  		addr=#{addr, jdbcType=VARCHAR}, 
+  		phone=#{phone, jdbcType=VARCHAR}
+  		where id=#{id, jdbcType=INTEGER}
+  </update>
+  
+  <insert id="insertAddr" parameterType="cn.edu.upc.pojo.UserAddr">
+  insert into <include refid="table"/> (uid, addr, phone) 
+  	values (#{uid, jdbcType=INTEGER}, #{addr, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR})
+  </insert>
+  
+</mapper>

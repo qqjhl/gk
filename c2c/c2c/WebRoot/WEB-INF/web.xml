@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>c2c</display-name>
+	
+	<!-- 定义 spring 配置信息 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:resources/spring-mybatis.xml</param-value>  <!-- java|resources 下的具体文件 -->
+    </context-param>
+	
+	<!-- spring监听器     web工程来实例化spring容器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:resources/log4j.properties</param-value> <!-- java|resources 下的具体文件 -->
+    </context-param>
+    
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    
+    <!-- 编码过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+    
+    <!-- 配置编码过滤 -->
+   <filter>
+    <filter-name>EncoidingFilter</filter-name>
+    <filter-class>cn.edu.upc.tool.EncoidingFilter</filter-class>
+    
+    <init-param>
+       <param-name>Encoding</param-name>
+       <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+       <filter-name>EncoidingFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+    <!-- 防止spring内存溢出监听器，比如quartz -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+
+    <!-- spring mvc servlet-->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:resources/spring-mvc.xml</param-value>  <!-- java|resources 下的具体文件 -->
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+	
+	<welcome-file-list>
+        <welcome-file>/</welcome-file>
+    </welcome-file-list>
+
+    <!-- session超时配置 -->
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+
+</web-app>

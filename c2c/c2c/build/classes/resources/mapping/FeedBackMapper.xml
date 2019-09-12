@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.upc.dao.FeedBackMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.upc.pojo.FeedBack">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="context" property="context" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="modified" property="modified" jdbcType="VARCHAR"/>
+        <result column="display" property="display" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="table">
+        feedback
+    </sql>
+
+    <sql id="all">
+        id, uid, context, phone, email, modified, display
+    </sql>
+    
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="all"/>
+        from
+        <include refid="table"/>
+        order by display desc
+    </select>
+    
+    <insert id="insert" parameterType="cn.edu.upc.pojo.FeedBack">
+        insert into
+        <include refid="table"/>
+        (uid, context, phone, email, modified, display)
+        values (  #{uid,jdbcType=INTEGER},
+        #{context,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{modified,jdbcType=VARCHAR},
+        #{display,jdbcType=INTEGER})
+    </insert>
+    
+</mapper>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="icon" href="img/page_icon.png"/>
+    <link rel="stylesheet" href="css/home_page/header_and_nav.css"/>
+    <link rel="stylesheet" href="css/personal/personal_info.css"/>
+    <link rel="stylesheet" href="css/personal/bootstrap.min.css"/>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/home/header_model_js.js"></script>
+    <script src="js/personal_info.js"></script>
+    <script src="js/admin_accredit.js"></script>
+    
+    <title>个人信息</title>
+    <style type="text/css">
+    
+    table.altrowstable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    width: 90%;
+    height: 98%;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table.altrowstable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.altrowstable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+    
+    .header
+	   {
+			 height:20%;
+			 margin-top:10%;
+			 text-align: center;
+ 			 background: white; 
+			 width:98%; 
+	   }
+	   .column
+	   {
+		   width:100%;
+			float: right;
+			margin-top:6%;
+	   }
+       .column.middle
+	   {
+		   width:50%; 
+		   height:auto;
+		   margin-top: 7%;
+		   margin-left: 7%;
+		   margin-right: 21%;
+		   background: white;
+		   border:1px solid #000;
+		   
+		   box-shadow: 5px 5px 10px #888888;
+		   -webkit-border-radius: 5px;
+		   
+		}
+		.column.left
+		{
+			width:17%;
+			background:#aebbae;
+			margin-left:5%;
+			margin-top:6%;
+			float: left;
+			-webkit-border-radius: 5px;
+		}
+		.column.right
+		{
+			width:15%;
+			background: pink;
+			float: right;
+		}
+		.column.middle ul{
+			float:left;
+			width:107.5%;
+			margin-top: -2%;
+    		margin-left: -4%;
+			height:20px; 
+			list-style:none;
+			  
+    		left: -30px;
+			/*
+			width:100%;
+			margin-top: -4%;
+    		margin-left: -4%;
+			*/
+		}
+		
+		.my_type_div ul{
+		
+		float:left;
+			width:107.5%;
+			margin-top: -2%;
+    		margin-left: -4%;
+			height:20px; 
+			list-style:none;
+			  
+    		left: -30px;
+			/*
+			width:100%;
+			margin-top: -4%;
+    		margin-left: -4%;
+			*/
+		
+		}
+		.ulli
+		{
+			list-style:none;
+			text-align:center;
+			background:#ece7e7;
+			cursor:pointer;
+
+			float:left;
+			height: 32px;
+			width: 93%;
+			
+			margin:11px -9px;
+			line-height: 30px;  
+    		padding: 0 ;  
+    		border: 1px solid #dddddd;  
+			pading-left:1px;
+			box-shadow: 5px 5px 10px #888888;
+		   -webkit-border-radius: 5px;
+		}
+		
+		.thirdtab
+		{
+			width:80%;
+			height:auto;
+			margin-left:10%;
+			margin-top:10%;	
+		}
+
+	   .hide{display:none;}
+	   
+    </style>
+    
+
+   <script type="text/javascript">
+    // JS实现选项卡切换
+	function firstclass(){
+	  	var divEle= document.getElementById('firstpage');
+	  	divEle.className='publish_product_div';
+		var divEle3= document.getElementById('thirdpage');
+	  	divEle3.className='hide';
+	  	var divEle5= document.getElementById('fivepage');
+	  	divEle5.className='hide';
+	  	
+	  	d=document.getElementsByTagName('li')
+	  	for(p=d.length;p--;){
+            if(d[p].id!="x"){d[p].style.backgroundColor='#FFFFFF'}
+            else{d[p].style.backgroundColor='#D2D2D2'} 
+        }
+	};	
+	
+	function thirdclass(){
+	
+	  	var divEle= document.getElementById('thirdpage');
+	  	divEle.className='show';
+	  
+		var divEle3= document.getElementById('firstpage');
+	  	divEle3.className='publish_product_div_no';
+	  	var divEle5= document.getElementById('fivepage');
+	  	divEle5.className='hide';
+	  	
+	  	d=document.getElementsByTagName('li')
+	  	for(p=d.length;p--;){
+            if(d[p].id!="z"){d[p].style.backgroundColor='#FFFFFF'}
+            else{d[p].style.backgroundColor='#D2D2D2'} 
+        }
+	  	
+	};	
+	
+	function fiveclass(){
+		var divEle5= document.getElementById('fivepage');
+	  	divEle5.className='show';
+
+		var divEle3= document.getElementById('thirdpage');
+	  	divEle3.className='hide';
+		var divEle4= document.getElementById('firstpage');
+	  	divEle4.className='publish_product_div_no';
+	  	
+	  	d=document.getElementsByTagName('li')
+	  	for(p=d.length;p--;){
+            if(d[p].id!="v"){d[p].style.backgroundColor='#FFFFFF'}	/*不点击为白色*/
+            else{d[p].style.backgroundColor='#D2D2D2'}      /*点击变色  灰色*/
+        }
+	  	
+	};	
+
+	window.addEventListener('load',function() {
+		var url = window.location.href;
+		var message = decodeURI(url.split("=")[1]);
+
+		if(message != 'undefined') {
+			alert(message);
+		}
+	});
+	
+	</script>
+
+</head>
+<body>
+
+
+<header th:include="header :: copy"></header>
+<div th:include="short_nav_show :: short_nav_show" class="short_nav_show"></div>
+<nav th:include="my_nav :: my_nav" class="my_nav"></nav>
+<div th:include="personal_nav :: personal_nav" class="personal_nav"></div>
+<div style="display: none" th:if="${message}!=null" class="show_tip" th:text="${message}" th:value="${message}"></div>
+
+<div class="column">
+	<div class="column left">
+    	<ul class="ul">
+        	<li class="ulli" onClick="firstclass()" id="x" style="background-color: rgb(210, 210, 210);">个人中心</li> <br/><br/><br/>
+        	<li class="ulli" onClick="thirdclass()" id="z" style="background-color: rgb(255, 255, 255);">审核记录</li><br/><br/><br/>
+        	<li class="ulli" onClick="fiveclass()" id="v" style="background-color: rgb(255, 255, 255);">交易流水</li><br/><br/><br/>
+    	</ul>   
+	</div>
+
+	<div class="column middle">     
+        
+        <div class="publish_product_div" id="firstpage" style="width:100%;height:auto;">
+        <div id="accordion">
+        
+            <h3>用 户 名：<span class="username_span" th:text="${userInformation.username}">123456</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>用户名：</span><input type="text" class="userName"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>真实姓名：<span class="realname_span" th:text="${userInformation.realname}"> &nbsp;</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>真实姓名：</span><input type="text" class="realName"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>性   别：<span class="sex_span" th:text="${userInformation.gender}">男</span></h3>
+            <div class="info_content">
+                <div class="first_info sex_info">
+                    <span>性别：</span>
+                    <input class="gender" id="1" type="radio" name="sex_choose" value="男" checked="checked"/>男
+                    <input class="gender" id="2" type="radio" name="sex_choose" value="女"/>女
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>班   级：<span class="clazz_span" th:text="${userInformation.clazz}">&nbsp;</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>班   级：</span><input type="text" class="clazz"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>学   号：<span class="sno_span" th:text="${userInformation.sno}">&nbsp;</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>学号：</span><input type="text" class="sno"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>宿 舍 号：<span class="dormitory_span" th:text="${userInformation.dormitory}">&nbsp;</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>宿舍号：</span><input type="text" class="dormitory"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+            
+            <h3>QQ：<span class="email_span" th:text="${userInformation.email}">&nbsp;</span></h3>
+            <div class="info_content">
+                <div class="first_info">
+                    <span>QQ：</span><input type="text" class="email"/>
+                    <span class="reqiure_enter"> 必须填写此字段</span>
+                </div>
+                <button class="update_button" >确认修改</button>
+            </div>
+        </div>
+    </div>
+          
+         <!--商品审核-->
+         <div id="thirdpage" class="hide" style="width:100%;height:auto;min-height: 270px;">
+          	<div style="margin-top:1%;margin-left:8%;">
+          	
+            	<table class="altrowstable" id="alternatecolor">
+					<tr>
+					    <th>商品名</th>
+					    <th>商品发布者</th>
+					    <th>审核人</th>
+					    <th>撤销原因</th>
+					    <th>审核时间</th>
+					</tr>
+					<tr  class="audit_list" th:each="r:${repealRecordList}">
+					    <td ><span th:text="${r.goodsname}">goodsname</span></td>
+					    <td ><span th:text="${r.publishuser}">publishuser</span></td>
+					    <td ><span th:text="${r.auditing}">auditing</span></td>
+					    <td ><span th:text="${r.reason}">reason</span></td>
+					    <td ><span th:text="${r.modified}">modified</span></td>
+					</tr>
+				</table>
+			
+             	 
+             </div> 
+             <br /> 
+          </div>   
+        
+        <!-- 流水记录 -->
+        <div id="fivepage" class="hide" style="width:100%;height:auto;min-height: 270px;">
+            <div style="margin-top:1%;margin-left:8%;">
+            	<table class="altrowstable" id="alternatecolor">
+					<tr>
+					    <th>交易物品</th>
+					    <th>买/卖</th>
+					    <th>交易人</th>
+					    <th>交易数目</th>
+					    <th>交易金额(RMB)</th>
+					    <th>交易时间</th>
+					</tr>
+					<tr  class="audit_list" th:each="r:${ls}">
+					    <td ><span th:text="${r.goodsname}">goodsname</span></td>
+					    <td ><span th:text="${r.io}">io</span></td>
+					    <td ><span th:text="${r.transactors}">transactors</span></td>
+					    <td ><span th:text="${r.counts}">counts</span></td>
+					    <td ><span th:text="${r.money}">money</span></td>
+					    <td ><span th:text="${r.modified}">modified</span></td>
+					</tr>
+
+				</table>
+          </div>
+         
+	</div>
+        
+        
+	</div>
+
+</div>
+</body>
+</html>

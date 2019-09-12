@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.upc.dao.UserContextMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.upc.pojo.UserContext" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="modified" property="modified" jdbcType="VARCHAR" />
+    <result column="sendid" property="sendid" jdbcType="INTEGER" />
+    <result column="acceptid" property="acceptid" jdbcType="INTEGER" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="stat" property="stat" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="table">
+    usercontext
+  </sql>
+
+  <sql id="all" >
+    id, modified, sendid, acceptid, context, stat
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="all" />
+    from <include refid="table"/>
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="sender" resultType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="all" />
+    from <include refid="table"/>
+    where sendid = #{sendid}
+  </select>
+  <select id="accepter" resultType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="all" />
+    from <include refid="table"/>
+    where acceptid = #{acceptid} and stat = '0' order by modified desc
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from <include refid="table"/>
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.upc.pojo.UserContext" >
+    insert into <include refid="table"/> (modified, sendid, acceptid, context )
+    values (#{modified, jdbcType=VARCHAR}, #{sendid, jdbcType=INTEGER}, #{acceptid, jdbcType=INTEGER},
+    #{context, jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateStat" parameterType="cn.edu.upc.pojo.UserContext">
+  	update <include refid="table"/> set stat = #{stat, jdbcType=VARCHAR}
+  	where id = #{id, jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.upc.dao.AdminInformationMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.upc.pojo.AdminInformation">
+        <id column="mid" property="mid" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="accredit" property="accredit" jdbcType="INTEGER"/>
+        <result column="modified" property="modified" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="table">  
+        admininformation
+    </sql>
+
+    <sql id="Base_Column_List">
+        mid, uid, accredit, modified
+    </sql>
+    
+    <select id="selectByUid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from <include refid="table"/>
+        where uid = #{uid,jdbcType=INTEGER}
+    </select>
+    <select id="selectByAccredit" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        FROM<include refid="table"/>
+        where accredit = #{accredit,jdbcType=INTEGER}
+    </select>
+    <!--
+    <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        FROM<include refid="table"/>
+        where phone = #{phone,jdbcType=CHAR}
+    </select>   -->
+    
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE
+        FROM<include refid="table"/>
+        WHERE mid = #{mid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="cn.edu.upc.pojo.AdminInformation">
+        INSERT INTO<include refid="table"/> (mid, uid, accredit, modified)
+        VALUES (#{mid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{accredit,jdbcType=INTEGER}, #{modified,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.edu.upc.pojo.AdminInformation">
+        insert into<include refid="table"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="accredit != null">
+                accredit,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="accredit != null">
+                #{accredit,jdbcType=INTEGER},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.edu.upc.pojo.AdminInformation">
+        update<include refid="table"/>
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="accredit != null">
+                accredit = #{accredit,jdbcType=INTEGER},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where mid = #{mid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.edu.upc.pojo.AdminInformation">
+        UPDATE
+        <include refid="table"/>
+        SET uid      = #{uid,jdbcType=INTEGER},
+            accredit = #{accredit,jdbcType=INTEGER},
+            modified = #{modified,jdbcType=VARCHAR}
+        WHERE mid = #{mid,jdbcType=INTEGER}
+    </update>
+</mapper>

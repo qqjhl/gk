@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>支付页面</title>
+</head>
+
+<script type="text/javascript">
+
+	//提交到form里面的 action指向的地方了
+	document.forms[0].submit();
+</script>
+
+<body>
+	<h3>hhahhhahah</h3>
+	<!-- 
+	<form id="punchout_form" name="punchout_form" method="post" action="${aliurl}">
+		<input type="hidden" name="biz_content" th:value="${bizContent}" />
+		<input type="submit" value="立即支付" style="display:block" />
+	</form> -->
+<form name="punchout_form" method="post" action="https://openapi.alipaydev.com/gateway.do?charset=utf-8&amp;method=alipay.trade.page.pay&amp;sign=PA%2F2XfFFSUpYadMdmQZU9V3083t3%2F1FfEg8TkjjCsY%2B%2B0z0iig5Cm0OX1tx0bitFF94SH6%2F7ssE9cEJKDm%2BlPX5NgaffEcyy%2BxXVUF%2B%2BQj4iAGFQJbCRpB%2BKtSjlXgGU3RvDAENAOLdV%2BF5ZAwoKR27qIPJvRdX%2Fj6LGB1Ajc%2FySI%2Bi8fahZeC7mIyAjuIHXPawLVubxbr2Ew4X5O4Tqs2Yj%2FHygyyQaJhDDrrAWGVXGJeFWJ5goTFQufkgPEZq0ZNYWKhO8rm90tbpa%2FjiZUMm6vvVt5fFFv70M4%2FZVCkjo71FCUHx9TBkO6qKPD6cT9gR9Lku9kmMzBpfSPSTHqg%3D%3D&amp;return_url=http%3A%2F%2Flocalhost%3A8080%2Fc2c%2FreturnUrl.do&amp;version=1.0&amp;app_id=2016100100639289&amp;sign_type=RSA2&amp;timestamp=2019-07-09+20%3A20%3A36&amp;alipay_sdk=alipay-sdk-java-dynamicVersionNo&amp;format=json">
+<input type="hidden" name="biz_content" value="{&quot;out_trade_no&quot;:&quot;423711835&quot;,&quot;total_amount&quot;:&quot;6889.00&quot;,&quot;subject&quot;:&quot;手表^手表男^商务手表^&quot;,&quot;body&quot;:&quot;交易很满意&quot;,&quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;}" /> 
+<input type="submit" value="立即支付" style="display:none" />
+</form>
+<script>document.forms[0].submit();</script>
+</body>
+</html>
